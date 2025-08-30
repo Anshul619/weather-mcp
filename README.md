@@ -1,11 +1,21 @@
-## Git Clone
+# WeatherMCP - Introduction
+
+- A Python-based MCP (Model Code Provider) server that integrates with MCP Client (GitHub Copilot or Claude Desktop) as a tool for fetching weather data. 
+- Built with Python, it runs as a local standard I/O server that can be configured in various MCP clients like VS Code’s mcp.json or .mcp.json for Claude Desktop.
+
+It supports simple commands like:
+- get_weather: Retrieves current weather conditions.
+- get_forecast: Provides a short-term weather forecast.
+- get_alerts: Fetches alerts for a specific region (e.g., US state).
+
+# Git Clone
 
 ````shell
 git clone weather-mcp
 cd weather-mcp
 ````
 
-## Create and activate virtual environment
+# Create and activate virtual environment
 
 ````shell
 python3 -m venv .venv
