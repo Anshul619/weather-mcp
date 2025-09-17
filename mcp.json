@@ -1,0 +1,11 @@
+{
+  "servers": {
+		"WeatherMCP": {
+			"type": "stdio",
+			"command": "<path>/weather-mcp/.venv/bin/python3",
+			"args": [
+				"<path>/weather-mcp/weather_server.py"
+			]
+		}
+	}
+}

@@ -1,17 +1,22 @@
 # WeatherMCP - Introduction
-
-- A Python-based MCP (Model Code Provider) server that integrates with MCP Client (GitHub Copilot or Claude Desktop) as a tool for fetching weather data. 
+- A Python-based MCP ([Model Code Provider](https://modelcontextprotocol.io/docs/getting-started/intro)) server that integrates with MCP Client (GitHub Copilot or Claude Desktop) as a tool for fetching weather data. 
 - Built with Python, it runs as a local standard I/O server that can be configured in various MCP clients like VS Code’s mcp.json or .mcp.json for Claude Desktop.
+- [Read more](https://modelcontextprotocol.io/docs/getting-started/intro)
 
-It supports simple commands like:
-- get_weather: Retrieves current weather conditions.
-- get_forecast: Provides a short-term weather forecast.
-- get_alerts: Fetches alerts for a specific region (e.g., US state).
+# Sample commands
+- `get_weather {"city": "London"}`: Retrieves current weather conditions.
+- `get_forecast {"city": "London"}`: Provides a short-term weather forecast.
+- `get_alerts {"state": "CA"}`: Fetches alerts for a specific region (e.g., US state).
+
+Or just ask:
+```
+Ask the WeatherMCP server for the weather in London.
+```
 
 # Git Clone
 
 ````shell
-git clone weather-mcp
+git clone https://github.com/Anshul619/weather-mcp
 cd weather-mcp
 ````
 
@@ -35,67 +40,52 @@ source .venv/bin/activate
 python weather_server.py
 ````
 
-# Config for VS Code (Copilot)
-- Add this to `~/.vscode/mcp.json` and restart VS code
+# Config for Claude Desktop
+- Add following JSON to `claude_desktop_config.json` file.
+- [Read more](https://modelcontextprotocol.io/docs/develop/build-server)
 
+````json
+{
+  "mcpServers": {
+		"WeatherMCP": {
+			"type": "stdio",
+			"command": "<path>/weather-mcp/.venv/bin/python3",
+			"args": [
+				"<path>/weather-mcp/weather_server.py"
+			]
+		}
+	}
+}
+````
+
+# Config for VS Code (Copilot)
+- Add following JSON to `~/.vscode/mcp.json` file and restart VS code.
+- [Read more](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
 
 ````json
 {
   "servers": {
-    "WeatherMCP": {
-      "type": "stdio",
-      "command": "python",
-      "args": ["path/to/weather_server.py"]
-    }
-  }
+		"WeatherMCP": {
+			"type": "stdio",
+			"command": "<path>/weather-mcp/.venv/bin/python3",
+			"args": [
+				"<path>/weather-mcp/weather_server.py"
+			]
+		}
+	}
 }
 ````
 
-# Restart VS Code
-- Quit and relaunch VS Code.
-- Open the Copilot sidebar.
-- You should now see WeatherMCP listed as an available MCP server.
-
-# Verify Copilot sees your MCP server
+## Verify Copilot sees your MCP server
 - Open VS Code Command Palette (Cmd+Shift+P on Mac, Ctrl+Shift+P on Windows).
 - Search for `Copilot: List MCP Servers` (this command was added when MCP support shipped).
 - You should see WeatherMCP in the list.
 
 If it’s missing:
-- Check that your `mcp.json` path is correct.
-- Check the log: View → Output → Copilot (dropdown) for MCP errors.
+- Check that your `~/.vscode/mcp.json` path is correct.
+- Check the log: **View** → **Output** → **Copilot (dropdown)** for MCP errors.
 
-
-# Try it out
-
-```shell
-/weather get_weather {"city": "London"}
-/weather get_forecast {"city": "London"}
-/weather get_alerts {"state": "CA"}
-```
-
-Or just ask:
-
-```
-“Ask the WeatherMCP server for the weather in London.”
-```
-
-# Debugging tips
-- If Copilot doesn’t show your server: check `~/.vscode/mcp.json` syntax (must be valid JSON).
+## Debugging tips
+- If Copilot doesn't show your server: check `~/.vscode/mcp.json` syntax (must be valid JSON).
 - If the server crashes: run `python weather_server.py` manually in a terminal to see errors.
 - You can also add debug `print()` calls in `handle_tool_call` to see incoming requests.
-
-# Optional - Config for Claude Desktop
-- Add this to `~/.mcp.json`
-
-````json
-{
-  "servers": {
-    "WeatherMCP": {
-      "command": "python",
-      "args": ["path/to/weather_server.py"],
-      "type": "stdio"
-    }
-  }
-}
-````
