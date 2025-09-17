@@ -10,6 +10,9 @@ import asyncio
 import httpx
 from fastmcp import FastMCP
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 mcp = FastMCP("Weather Server")
 
 # API endpoints

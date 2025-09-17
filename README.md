@@ -18,8 +18,8 @@ Ask the WeatherMCP server for the weather in London.
 ## Clone the Repository
 
 ````shell
-git clone https://github.com/Anshul619/weather-mcp
-cd weather-mcp
+git clone https://github.com/Anshul619/weather-mcp-server
+cd weather-mcp-server
 ````
 
 ## Create and activate a virtual environment
@@ -42,7 +42,7 @@ source .venv/bin/activate
 python weather_server.py
 ````
 
-# Configure for Claude Desktop (option)
+# Configure for Claude Desktop (optional)
 - Add following JSON to `claude_desktop_config.json` file.
 - [Read more](https://modelcontextprotocol.io/docs/develop/build-server)
 
