@@ -3,13 +3,23 @@
 - Built with Python, it runs as a local standard I/O server that can be configured in various MCP clients like VS Code’s mcp.json or .mcp.json for Claude Desktop.
 - [Read more](https://modelcontextprotocol.io/docs/getting-started/intro)
 
-# Sample prompts
-- `get_weather {"city": "London"}`: Retrieves current weather conditions.
-- `get_forecast {"city": "London"}`: Provides a short-term weather forecast.
-- `get_alerts {"state": "CA"}`: Fetches alerts for a specific region (e.g., US state).
+# High level design
 
-Or just ask:
-````
+![](assets/Weather-MCP-Server.drawio.png)
+
+# Demo in action (with Claude Desktop)
+
+![](assets/claude-demo.png)
+
+# Sample prompts
+
+````shell
+get_weather {"city": "London"} # Retrieves current weather conditions.
+
+get_forecast {"city": "London"} # Provides a short-term weather forecast.
+
+get_alerts {"state": "CA"} # Fetches alerts for a specific region (e.g., US state).
+
 Ask the WeatherMCP server for the weather in London.
 ````
 
@@ -60,8 +70,10 @@ python weather_server.py
 }
 ````
 
+
+
 # Configure for Copilot (through visual code)
-- If you're using VS Code with GitHub Copilot, add the following configuration to your `~/.vscode/mcp.json` file and restart VS code.
+- If you're using VS Code with **GitHub Copilot**, add the following configuration to your `~/.vscode/mcp.json` file and restart VS code.
 - [Read more](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
 
 ````json
