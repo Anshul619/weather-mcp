@@ -1,7 +1,7 @@
 # WeatherMCP Server
-- A Python-based MCP ([Model Code Provider](https://modelcontextprotocol.io/docs/getting-started/intro)) server that integrates with MCP Client (GitHub Copilot or Claude Desktop) as a tool for fetching weather data. 
+- A Python-based MCP ([Model Code Provider](https://github.com/Anshul619/AI-ML-design-services/blob/main/MCP/Readme.md)) server that integrates with MCP Client (GitHub Copilot or Claude Desktop) as a tool for fetching weather data. 
 - Built with Python, it runs as a local standard I/O server that can be configured in various MCP clients like VS Code’s mcp.json or .mcp.json for Claude Desktop.
-- [Read more](https://modelcontextprotocol.io/docs/getting-started/intro)
+- [Read more](https://modelcontextprotocol.io/docs/develop/build-server)
 
 # High level design
 
@@ -70,10 +70,8 @@ python weather_server.py
 }
 ````
 
-
-
 # Configure for Copilot (through visual code)
-- If you're using VS Code with **GitHub Copilot**, add the following configuration to your `~/.vscode/mcp.json` file and restart VS code.
+- If you're using VS Code with [GitHub Copilot](https://github.com/features/copilot), add the following configuration to your `~/.vscode/mcp.json` file and restart VS code.
 - [Read more](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
 
 ````json
